@@ -1,19 +1,3 @@
-// action = {
-//     type: 'CREATE_EVENT',
-//     title: '2020年東京オリンピックのお知らせ',
-//     body: '2020年に東京オリンピックを開催します！つきましては、、、、'
-// }
-//
-// #before
-// state = []
-//
-// #before
-// state = [
-//     {id:1,title:'タイトル１',body:'ボディー１'},
-//     {id:2,title:'タイトル２',body:'ボディー２'},
-//     {id:3,title:'タイトル３',body:'ボディー３'}
-// ]
-
 
 const events = (state = [],action) => {
     switch(action.type){
@@ -23,7 +7,7 @@ const events = (state = [],action) => {
             let id = length === 0 ? 1 : state[length-1].id + 1
             return [...state,{id,...event}]
         case 'DELETE_EVENT':
-            return state
+            return state.filter(event => event.id  !== action.id)
         case 'DELETE_ALL_EVENTS':
             return []
         default:
